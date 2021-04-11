@@ -1,10 +1,26 @@
 import { Switch, Route } from 'react-router-dom';
-import HomeView from './views/HomeView';
+import HomePage from './views/HomePage';
 import './App.css';
 
-const App = () => (
-  <>
-    <Route exact path="/" component={HomeView} />
-  </>
-);
-export default App;
+import React, { Component } from 'react';
+
+export default class App extends Component {
+  render() {
+    state = {
+      films: [],
+    };
+    return (
+      //  const { films } = this.state;
+      <>
+        <Route exact path="/" component={HomePage} />
+      </>
+    );
+  }
+}
+
+// const App = () => (
+//   <>
+//     <Route exact path="/" component={HomeView} />
+//   </>
+// );
+// export default App;
