@@ -1,0 +1,16 @@
+.Header {
+  box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
+  height: 72px;
+  overflow: hidden;
+}
+.HeaderNav {
+  list-style: none;
+  display: flex;
+}
+.Link {
+  margin-right: 40px;
+  color: currentColor;
+}
+.LinkActive {
+  color: firebrick;
+}
