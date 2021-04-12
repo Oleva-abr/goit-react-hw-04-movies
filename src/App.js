@@ -6,21 +6,17 @@ import React, { Component } from 'react';
 
 export default class App extends Component {
   render() {
-    state = {
-      films: [],
-    };
+    // state = {
+    //   films: [],
+    // };
     return (
       //  const { films } = this.state;
       <>
-        <Route exact path="/" component={HomePage} />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/" component={HomePage} />
+        </Switch>
       </>
     );
   }
 }
-
-// const App = () => (
-//   <>
-//     <Route exact path="/" component={HomeView} />
-//   </>
-// );
-// export default App;
