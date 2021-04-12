@@ -16,9 +16,14 @@ const KEY = 'cbca180a8e271793e5e6f498a709d8ac';
 export const popularFilms = () =>
   axios
     .get(`${URL}/trending/movie/week?api_key=${KEY}`)
-    .then(({ data }) => data.results);
+    .then(({ data }) => data.results)
+    .catch(error => error);
 
-export const searchInfo = id => axios.get(`${URL}/movie/${id}?api_key=${KEY}`);
+export const searchInfo = id =>
+  axios
+    .get(`${URL}/movie/${id}?api_key=${KEY}`)
+    .then(({ data }) => data.results)
+    .catch(error => error);
 
 export const movieInfo = (query = 'batman') =>
   axios.get(
