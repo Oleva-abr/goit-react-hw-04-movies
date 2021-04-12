@@ -16,7 +16,7 @@ export default class HomePage extends Component {
     const { films } = this.state;
     return (
       <>
-        <h1> Popular movies</h1>
+        <h1> Trending this week</h1>
         <ul>
           {films.map(film => (
             <li key={film.id}>{film.title}</li>
