@@ -20,7 +20,7 @@ export default class App extends Component {
             path={routes.movieDetails}
             component={MovieDetailsPage}
           />
-          <Redirect to="/" />
+          <Redirect to={routes.home} />
         </Switch>
       </>
     );

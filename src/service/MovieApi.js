@@ -16,21 +16,22 @@ const KEY = 'cbca180a8e271793e5e6f498a709d8ac';
 export const popularFilms = () =>
   axios
     .get(`${URL}/trending/movie/week?api_key=${KEY}`)
+    // .then(console.log)
     .then(({ data }) => data.results)
     .catch(error => error);
 
-export const searchInfo = id =>
-  axios
-    .get(`${URL}/movie/${id}?api_key=${KEY}`)
-    .then(({ data }) => data.results)
-    .catch(error => error);
+export const movieDetails = movieId =>
+  axios.get(`${URL}/movie/${movieId}?api_key=${KEY}&language=en-US`);
+// .then(console.log);
+// .then(({ data }) => data.results)
+// .catch(error => error);
 
 export const movieInfo = (query = 'batman') =>
   axios.get(
     `${URL}/search/movie?api_key=${KEY}&language=en-US&page=1&include_adult=false&query=${query}`,
   );
-export const Cast = id =>
-  axios.get(`${URL}/movie/${id}/credits?api_key=${KEY}`);
+export const Cast = movieId =>
+  axios.get(`${URL}/movie/${movieId}/credits?api_key=${KEY}`);
 
-export const Reviews = id =>
-  axios.get(`${URL}/movie/${id}/reviews?api_key=${KEY}`);
+export const Reviews = movieId =>
+  axios.get(`${URL}/movie/${movieId}/reviews?api_key=${KEY}`);
