@@ -21,8 +21,10 @@ export const popularFilms = () =>
     .catch(error => error);
 
 export const movieDetails = movieId =>
-  axios.get(`${URL}/movie/${movieId}?api_key=${KEY}&language=en-US`);
-// .then(console.log);
+  axios
+    .get(`${URL}/movie/${movieId}?api_key=${KEY}`)
+    .then(({ data }) => data)
+    .catch(error => error);
 // .then(({ data }) => data.results)
 // .catch(error => error);
 
