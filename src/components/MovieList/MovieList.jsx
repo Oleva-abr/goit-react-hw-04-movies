@@ -1,5 +1,5 @@
 import React from 'react';
-
+import routes from '../../routes/mainRoute';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -11,7 +11,7 @@ const MoviesList = ({ films, location }) => {
           <li key={id}>
             <Link
               to={{
-                pathname: `/movies/${id}`,
+                pathname: `${routes.movies}/${id}`,
 
                 state: { from: location },
               }}
