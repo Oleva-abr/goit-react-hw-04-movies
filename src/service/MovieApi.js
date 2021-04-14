@@ -16,7 +16,6 @@ const KEY = 'cbca180a8e271793e5e6f498a709d8ac';
 export const popularFilms = () =>
   axios
     .get(`${URL}/trending/movie/week?api_key=${KEY}`)
-    // .then(console.log)
     .then(({ data }) => data.results)
     .catch(error => error);
 
@@ -25,13 +24,14 @@ export const movieDetails = movieId =>
     .get(`${URL}/movie/${movieId}?api_key=${KEY}`)
     .then(({ data }) => data)
     .catch(error => error);
-// .then(({ data }) => data.results)
-// .catch(error => error);
 
-export const movieInfo = (query = 'batman') =>
-  axios.get(
-    `${URL}/search/movie?api_key=${KEY}&language=en-US&page=1&include_adult=false&query=${query}`,
-  );
+export const movieInfo = (searchQuery = 'batman') =>
+  axios
+    .get(`${URL}/search/movie?query=${searchQuery}&api_key=${KEY}`)
+    .then(({ data }) => data.results)
+
+    .catch(error => error);
+
 export const Cast = movieId =>
   axios.get(`${URL}/movie/${movieId}/credits?api_key=${KEY}`);
 

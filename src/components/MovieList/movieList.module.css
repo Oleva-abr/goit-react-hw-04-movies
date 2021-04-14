@@ -1,0 +1,12 @@
+.list {
+  list-style: none;
+  font-size: 20px;
+}
+ul {
+  list-style: none;
+}
+.listEl::before {
+  content: '📌';
+  display: inline-block;
+  margin-right: 10px;
+}

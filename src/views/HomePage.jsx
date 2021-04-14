@@ -22,13 +22,6 @@ export default class HomePage extends Component {
       <>
         <h1> Trending this week</h1>
         <MoviesList films={films} />
-        {/* <ul>
-          {films.map(film => (
-            <li key={film.id}>
-              <Link to={`${routes.movies}/${film.id}`}>{film.title}</Link>
-            </li>
-          ))}
-        </ul> */}
       </>
     );
   }
