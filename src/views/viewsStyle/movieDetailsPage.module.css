@@ -1,0 +1,31 @@
+.button {
+  width: 100px;
+  margin: 10px;
+  padding: 5px;
+  font-size: 20px;
+}
+
+.overlay {
+  box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
+}
+.cardTthumb {
+  display: flex;
+}
+.cardText {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  font-size: large;
+}
+img {
+  border-radius: 5px;
+  margin-bottom: 40px;
+}
+.genreList {
+  display: flex;
+  justify-items: flex-start;
+  font-weight: bold;
+}
+.genreItem {
+  margin-right: 5px;
+}
