@@ -4,7 +4,7 @@ import style from './header.module.css';
 import routes from '../../routes/mainRoute';
 
 const Header = () => (
-  <div className={style.Header}>
+  <header className={style.Header}>
     <ul className={style.HeaderNav}>
       <li>
         <NavLink
@@ -27,6 +27,6 @@ const Header = () => (
         </NavLink>
       </li>
     </ul>
-  </div>
+  </header>
 );
 export default Header;
