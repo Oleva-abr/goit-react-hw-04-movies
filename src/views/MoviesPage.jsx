@@ -24,7 +24,7 @@ export class MoviesPage extends Component {
     API.movieInfo(query)
 
       .then(results => {
-        this.setState({ movies: results });
+        this.setState({ films: results });
       })
       .catch(error => console.log(error));
 
@@ -38,7 +38,6 @@ export class MoviesPage extends Component {
     const isShowMovies = films.length > 0;
     return (
       <>
-        <h1>Movie Page</h1>
         <SearchBar onSubmit={this.handleSubmit} />
         {isShowMovies && (
           <MovieList location={this.props.location} films={films} />
