@@ -22,7 +22,7 @@ export const popularFilms = () =>
 export const movieDetails = movieId =>
   axios
     .get(`${URL}/movie/${movieId}?api_key=${KEY}`)
-    .then(({ data }) => data)
+    .then(({ data }) => data.results)
     .catch(error => error);
 
 export const movieInfo = (searchQuery = 'batman') =>

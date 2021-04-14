@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import * as API from '../service/MovieApi';
-// import routes from '../routes/mainRoute';
-// import MoviesPage from './MoviesPage';
 import MoviesList from '../components/MovieList/MovieList';
 
 export default class HomePage extends Component {

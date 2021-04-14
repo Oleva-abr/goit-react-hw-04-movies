@@ -12,7 +12,7 @@ const MoviesList = ({ films, location }) => {
           <li className={style.listEl} key={id}>
             <Link
               to={{
-                pathname: `${routes.movies}/${id}`,
+                pathname: `${routes.movieDetails}/${id}`,
 
                 state: { from: location },
               }}
