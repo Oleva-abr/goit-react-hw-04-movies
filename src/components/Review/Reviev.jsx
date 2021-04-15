@@ -8,30 +8,26 @@ export default class Reviews extends Component {
   };
 
   componentDidMount() {
-    API.Reviews(this.props.id)
+    API.Reviews(this.props.location.state.id)
       .then(results => this.setState({ reviews: results }))
       .catch(error => console.log(error));
   }
 
   render() {
-    const { reviews } = this.state;
-    const isShowReviews = reviews.length > 0;
+    const { reviews, error } = this.state;
 
     return (
       <>
-        {isShowReviews ? (
-          <ul>
-            {reviews.map(review => (
-              <li key={review.id}>
-                <h4>Author: {review.author}</h4>
-                <p>{review.content}</p>
-                <a href={review.url}>{review.url}</a>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <h3>We don't have any reviews for this movie</h3>
-        )}
+        <ul>
+          {reviews.map(({ id, author, content }) => (
+            <li key={id}>
+              <h4> Author: {author}</h4>
+              <p>{content}</p>
+            </li>
+          ))}
+        </ul>
+
+        {error && <h3 className="ErrorMessage">{error.message}</h3>}
       </>
     );
   }

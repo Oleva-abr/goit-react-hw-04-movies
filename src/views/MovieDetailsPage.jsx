@@ -95,13 +95,12 @@ export default class MovieDetailsPage extends Component {
         </ul>
 
         <Switch>
-          <Route path={`${match.url}/cast`} component={Cast} />
+          <Route exact path={`${match.url}/cast`} component={Cast} />
         </Switch>
         <Route
-          path={`${this.props.match.url}/reviews`}
-          render={props => (
-            <Reviews {...props} id={this.props.match.params.movieId} />
-          )}
+          exact
+          path={`${this.props.match.path}/reviews`}
+          component={Reviews}
         />
       </section>
     );
