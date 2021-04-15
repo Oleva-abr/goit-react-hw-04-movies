@@ -1,9 +1,12 @@
-import React, { Component, NavLink } from 'react';
+import React, { Component, lazy } from 'react';
 import * as API from '../service/MovieApi';
 import style from './viewsStyle/movieDetailsPage.module.css';
-import Cast from './Cast';
+import { NavLink } from 'react-router-dom';
 import routes from '../routes/mainRoute';
-
+import { Route, Switch } from 'react-router';
+const Cast = lazy(() => import('../components/Cast'));
+// const Reviews = lazy(() => import(''));
+// import Cast from '../components/Cast';
 export default class MovieDetailsPage extends Component {
   state = {
     title: null,
@@ -23,15 +26,21 @@ export default class MovieDetailsPage extends Component {
 
   handleGoBack = () => {
     const { history, location } = this.props;
-    if (location.state && location.state.from) {
-      history.push(location.state.from);
-    } else {
-      history.push(routes.home);
-    }
+    // if (location.state && location.state.from) {
+    //   history.push(location.state.from);
+    // } else {
+    //   history.push(routes.home);
+    // }
+    history.push(location?.state?.from || routes.home);
   };
   render() {
     const { genres, overview, poster_path, title, vote_average } = this.state;
+    const { match, location } = this.props;
 
+    // console.log(match);
+    // console.log(location);
+    // const locationFrom = location.state.from;
+    console.log(location);
     return (
       <section className={style.overlay}>
         <button
@@ -45,7 +54,9 @@ export default class MovieDetailsPage extends Component {
         <h1>{title}</h1>
         <div className={style.cardTthumb}>
           <img
-            src={`https://image.tmdb.org/t/p/w342/${poster_path}`}
+            src={
+              poster_path && `https://image.tmdb.org/t/p/w342/${poster_path}`
+            }
             alt="{title}"
           />
           <div className={style.cardText}>
@@ -60,6 +71,22 @@ export default class MovieDetailsPage extends Component {
             </ul>
           </div>
         </div>
+        <ul>
+          <li>
+            <NavLink
+              to={{
+                pathname: `${match.url}/cast`,
+                state: { from: location.state.from, id: match.params.movieId },
+              }}
+            >
+              Cast
+            </NavLink>
+          </li>
+        </ul>
+
+        <Switch>
+          <Route path={`${match.url}/cast`} component={Cast} />
+        </Switch>
       </section>
     );
   }
