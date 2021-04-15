@@ -73,9 +73,10 @@ export default class MovieDetailsPage extends Component {
             </ul>
           </div>
         </div>
-        <ul>
+        <ul className={style.listReview}>
           <li>
             <NavLink
+              className={style.navItem}
               to={{
                 pathname: `${match.url}/cast`,
                 state: { from: location.state.from, id: match.params.movieId },
@@ -86,6 +87,7 @@ export default class MovieDetailsPage extends Component {
           </li>
           <li>
             <NavLink
+              className={style.navItem}
               to={{
                 pathname: `${match.url}/reviews`,
                 state: location.state,

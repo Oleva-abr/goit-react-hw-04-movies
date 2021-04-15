@@ -30,3 +30,11 @@ img {
 .genreItem {
   margin-right: 5px;
 }
+.listReview {
+  display: flex;
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+.navItem {
+  margin-right: 30px;
+}

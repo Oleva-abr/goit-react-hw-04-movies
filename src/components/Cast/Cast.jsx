@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as API from '../../service/MovieApi';
-
+import style from './cast.module.css';
 export default class Cast extends Component {
   state = {
     actorsList: [],
@@ -19,9 +19,9 @@ export default class Cast extends Component {
     return (
       <>
         {isShowCast && (
-          <ul>
+          <ul className={style.castlist}>
             {actorsList.map(actor => (
-              <li key={actor.id}>
+              <li className={style.castItem} key={actor.id}>
                 <img
                   src={
                     actor.profile_path
@@ -29,6 +29,7 @@ export default class Cast extends Component {
                       : `http://lamcdn.net/lookatme.ru/post_image-image/sIaRmaFSMfrw8QJIBAa8mA-article.png`
                   }
                   alt={`Actor: ${actor.name}`}
+                  width="270"
                 />
                 <h3>{actor.name}</h3>
               </li>
