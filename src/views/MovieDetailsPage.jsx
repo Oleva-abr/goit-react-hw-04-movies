@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import routes from '../routes/mainRoute';
 import { Route, Switch } from 'react-router';
 const Cast = lazy(() => import('../components/Cast'));
-// const Reviews = lazy(() => import(''));
+const Reviews = lazy(() => import('../components/Review'));
 // import Cast from '../components/Cast';
 export default class MovieDetailsPage extends Component {
   state = {
@@ -82,11 +82,27 @@ export default class MovieDetailsPage extends Component {
               Cast
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to={{
+                pathname: `${match.url}/reviews`,
+                state: location.state,
+              }}
+            >
+              Reviews
+            </NavLink>
+          </li>
         </ul>
 
         <Switch>
           <Route path={`${match.url}/cast`} component={Cast} />
         </Switch>
+        <Route
+          path={`${this.props.match.url}/reviews`}
+          render={props => (
+            <Reviews {...props} id={this.props.match.params.movieId} />
+          )}
+        />
       </section>
     );
   }
