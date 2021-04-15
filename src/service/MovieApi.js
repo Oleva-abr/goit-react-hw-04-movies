@@ -33,7 +33,13 @@ export const movieInfo = (searchQuery = 'batman') =>
     .catch(error => error);
 
 export const Cast = movieId =>
-  axios.get(`${URL}/movie/${movieId}/credits?api_key=${KEY}`);
+  axios
+    .get(`${URL}/movie/${movieId}/credits?api_key=${KEY}`)
+    .then(({ data }) => data.cast)
+    .catch(error => error);
 
 export const Reviews = movieId =>
-  axios.get(`${URL}/movie/${movieId}/reviews?api_key=${KEY}`);
+  axios
+    .get(`${URL}/movie/${movieId}/reviews?api_key=${KEY}`)
+    .then(({ data }) => data.results)
+    .catch(error => error);

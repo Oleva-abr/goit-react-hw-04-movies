@@ -1,6 +1,9 @@
 import React, { Component, NavLink } from 'react';
 import * as API from '../service/MovieApi';
 import style from './viewsStyle/movieDetailsPage.module.css';
+import Cast from './Cast';
+import routes from '../routes/mainRoute';
+
 export default class MovieDetailsPage extends Component {
   state = {
     title: null,
@@ -14,17 +17,17 @@ export default class MovieDetailsPage extends Component {
   async componentDidMount() {
     const movieId = this.props.match.params.movieId;
     const response = await API.movieDetails(movieId);
-    console.log(response);
+
     this.setState({ ...response });
   }
-  handleGoBack = () => {
-    // const { location, history } = this.props;
 
-    // history.push(location.state);
-    this.props.history.push({
-      pathname: this.state.prevPosition,
-      search: 'query=batman',
-    });
+  handleGoBack = () => {
+    const { history, location } = this.props;
+    if (location.state && location.state.from) {
+      history.push(location.state.from);
+    } else {
+      history.push(routes.home);
+    }
   };
   render() {
     const { genres, overview, poster_path, title, vote_average } = this.state;
