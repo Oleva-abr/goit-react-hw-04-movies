@@ -55,7 +55,9 @@ export default class MovieDetailsPage extends Component {
         <div className={style.cardTthumb}>
           <img
             src={
-              poster_path && `https://image.tmdb.org/t/p/w342/${poster_path}`
+              poster_path
+                ? `https://image.tmdb.org/t/p/w342/${poster_path}`
+                : `http://lamcdn.net/lookatme.ru/post_image-image/sIaRmaFSMfrw8QJIBAa8mA-article.png`
             }
             alt="{title}"
           />

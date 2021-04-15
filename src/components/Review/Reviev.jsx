@@ -15,19 +15,21 @@ export default class Reviews extends Component {
 
   render() {
     const { reviews, error } = this.state;
-
+    const isShowReviews = reviews.length > 0;
     return (
       <>
-        <ul>
-          {reviews.map(({ id, author, content }) => (
-            <li key={id}>
-              <h4> Author: {author}</h4>
-              <p>{content}</p>
-            </li>
-          ))}
-        </ul>
-
-        {error && <h3 className="ErrorMessage">{error.message}</h3>}
+        {isShowReviews ? (
+          <ul>
+            {reviews.map(({ id, author, content }) => (
+              <li key={id}>
+                <h4> Author: {author}</h4>
+                <p>{content}</p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <h3>We don't have any reviews for this movie</h3>
+        )}
       </>
     );
   }
