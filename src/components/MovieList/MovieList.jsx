@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import style from './movieList.module.css';
 
@@ -35,4 +35,4 @@ MoviesList.propType = {
   ),
 };
 
-export default MoviesList;
+export default withRouter(MoviesList);

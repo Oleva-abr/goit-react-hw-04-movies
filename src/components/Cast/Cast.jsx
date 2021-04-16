@@ -5,11 +5,13 @@ export default class Cast extends Component {
   state = {
     actorsList: [],
   };
+
   componentDidMount() {
-    API.Cast(this.props.location.state.id)
+    const { location } = this.props;
+    API.Cast(location.state?.id)
       .then(cast => this.setState({ actorsList: cast }))
       .catch(error => console.log(error));
-    // console.log(this.props);
+    console.log(this.props);
   }
 
   render() {

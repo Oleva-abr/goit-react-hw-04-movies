@@ -39,9 +39,7 @@ export class MoviesPage extends Component {
     return (
       <>
         <SearchBar onSubmit={this.handleSubmit} />
-        {isShowMovies && (
-          <MovieList location={this.props.location} films={films} />
-        )}
+        {isShowMovies && <MovieList films={films} />}
       </>
     );
   }

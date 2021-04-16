@@ -38,9 +38,9 @@ export default class MovieDetailsPage extends Component {
     const { match, location } = this.props;
 
     // console.log(match);
-    // console.log(location);
-    // const locationFrom = location.state.from;
     console.log(location);
+    // const locationFrom = location.state.from;
+    // console.log(location);
     return (
       <section className={style.overlay}>
         <button
@@ -79,7 +79,7 @@ export default class MovieDetailsPage extends Component {
               className={style.navItem}
               to={{
                 pathname: `${match.url}/cast`,
-                state: { from: location.state.from, id: match.params.movieId },
+                state: { from: location.state?.from, id: match.params.movieId },
               }}
             >
               Cast
@@ -90,7 +90,7 @@ export default class MovieDetailsPage extends Component {
               className={style.navItem}
               to={{
                 pathname: `${match.url}/reviews`,
-                state: location.state,
+                state: { from: location.state?.from, id: match.params.movieId },
               }}
             >
               Reviews
@@ -101,11 +101,7 @@ export default class MovieDetailsPage extends Component {
         <Switch>
           <Route exact path={`${match.url}/cast`} component={Cast} />
         </Switch>
-        <Route
-          exact
-          path={`${this.props.match.path}/reviews`}
-          component={Reviews}
-        />
+        <Route exact path={`${match.url}/reviews`} component={Reviews} />
       </section>
     );
   }

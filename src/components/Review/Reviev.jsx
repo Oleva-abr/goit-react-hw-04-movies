@@ -8,13 +8,13 @@ export default class Reviews extends Component {
   };
 
   componentDidMount() {
-    API.Reviews(this.props.location.state.id)
+    API.Reviews(this.props.location.state?.id)
       .then(results => this.setState({ reviews: results }))
       .catch(error => console.log(error));
   }
 
   render() {
-    const { reviews, error } = this.state;
+    const { reviews } = this.state;
     const isShowReviews = reviews.length > 0;
     return (
       <>
