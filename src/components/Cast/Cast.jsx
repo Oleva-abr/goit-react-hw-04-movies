@@ -7,11 +7,12 @@ export default class Cast extends Component {
   };
 
   componentDidMount() {
-    const { location } = this.props;
-    API.Cast(location.state?.id)
+    const { location, match } = this.props;
+    const splitUrl = match.url.split('/');
+    const id = splitUrl[splitUrl.length - 2];
+    API.Cast(location.state?.id || id)
       .then(cast => this.setState({ actorsList: cast }))
       .catch(error => console.log(error));
-    console.log(this.props);
   }
 
   render() {

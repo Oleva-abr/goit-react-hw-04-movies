@@ -8,7 +8,10 @@ export default class Reviews extends Component {
   };
 
   componentDidMount() {
-    API.Reviews(this.props.location.state?.id)
+    const { location, match } = this.props;
+    const splitUrl = match.url.split('/');
+    const id = splitUrl[splitUrl.length - 2];
+    API.Reviews(location.state?.id || id)
       .then(results => this.setState({ reviews: results }))
       .catch(error => console.log(error));
   }
